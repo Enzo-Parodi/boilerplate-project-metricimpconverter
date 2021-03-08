@@ -36,26 +36,64 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     const validUnitsRegEx = /\bgal\b|\bl\b|\bmi\b|\bkm\b|\blbs\b|\bkg\b|\bGAL\b|\bL\b|\bMI\b|\bKM\b|\bLBS\b|\bKG\b/
-    console.log('NO', unit, !!unit.match(validUnitsRegEx))
-    const unit = input.match(/[A-Z]/g)
+    const unit = input.match(/[A-Z]/ig).join('')
     let result = 'Not a valid unit';
     
-    console.log("RESULT: ", result)
     if (!!unit.match(validUnitsRegEx)) {
       result = unit
     }
-
     return result;
   };
 
   this.getReturnUnit = function (initUnit) {
     let result;
 
+    switch(initUnit) {
+      case 'gal':
+        result = 'L';
+        break;
+      case 'l':
+        result = 'gal';
+        break;
+      case 'mi':
+        result = 'km';
+        break;
+      case 'km':
+        result = 'mi';
+        break;
+      case 'lbs':
+        result = 'kg';
+        break;
+      case 'kg':
+        result = 'lbs';
+        break;
+    }
+
     return result;
   };
 
   this.spellOutUnit = function (unit) {
     let result;
+    switch(unit) {
+      case 'gal':
+        result = 'gallons';
+        break;
+      case 'l':
+        result = 'litres';
+        break;
+      case 'mi':
+        result = 'miles';
+        break;
+      case 'km':
+        result = 'kilometres';
+        break;
+      case 'lbs':
+        result = 'pounds';
+        break;
+      case 'kg':
+        result = 'kilograms';
+        break;
+    }
 
     return result;
   };
@@ -65,6 +103,27 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
+
+    switch(initUnit) {
+      case 'gal':
+        result = initNum * galToL
+        break;
+      case 'l':
+        result = initNum / galToL;
+        break;
+      case 'mi':
+        result = 'miles';
+        break;
+      case 'km':
+        result = 'kilometres';
+        break;
+      case 'lbs':
+        result = 'pounds';
+        break;
+      case 'kg':
+        result = 'kilograms';
+        break;
+    }
 
     return result;
   };
