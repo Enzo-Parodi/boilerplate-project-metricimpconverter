@@ -18,33 +18,39 @@ suite('Unit Tests', function(){
     
     test('Whole number input', function(done) {
       let input = '32L';
-      assert.equal(convertHandler.getNum(input),32);
+      assert.equal(convertHandler.getNum(input),32.00);
       done();
     });
     
     test('Decimal Input', function(done) {
-      
-      //done();
+      let input = '2.4L';
+      assert.equal(convertHandler.getNum(input),2.40);
+      done();
     });
     
     test('Fractional Input', function(done) {
-      
-      //done();
+      let input = '2/3L';
+      assert.equal(convertHandler.getNum(input),0.67);
+      done();
     });
     
     test('Fractional Input w/ Decimal', function(done) {
-      
-      //done();
+      let input = '2.4/3L';
+      assert.equal(convertHandler.getNum(input),0.80);
+      done();
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      
-      //done();
+      let input = '5.4/7/4L'
+      assert.equal(convertHandler.getNum(input), "invalid input");
+      done();
     });
     
     test('No Numerical Input', function(done) {
+      let input = "no number"
       
-      //done();
+      assert.equal(convertHandler.getNum(input), "invalid input");
+      done();
     }); 
     
   });
@@ -54,7 +60,9 @@ suite('Unit Tests', function(){
     test('For Each Valid Unit Inputs', function(done) {
       let input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
       input.forEach(function(ele) {
-        //assert
+        console.log("before", convertHandler.getUnit(`10${ele}`))
+        assert.equal(convertHandler.getUnit(`10${ele}`), ele)
+        console.log("after")
       });
       done();
     });
