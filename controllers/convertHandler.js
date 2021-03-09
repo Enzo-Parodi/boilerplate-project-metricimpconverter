@@ -112,16 +112,16 @@ function ConvertHandler() {
         result = initNum / galToL;
         break;
       case 'mi':
-        result = 'miles';
+        result = initNum * miToKm;
         break;
       case 'km':
-        result = 'kilometres';
+        result = initNum / miToKm;
         break;
       case 'lbs':
-        result = 'pounds';
+        result = initNum * lbsToKg;
         break;
       case 'kg':
-        result = 'kilograms';
+        result = initNum / lbsToKg;
         break;
     }
 

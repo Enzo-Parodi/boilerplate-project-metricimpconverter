@@ -118,23 +118,31 @@ suite('Unit Tests', function(){
     });
     
     test('Mi to Km', function(done) {
-      
-      //done();
+      let input = [8, 'mi'];
+      let expected = 12.87;
+      assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
+      done();
     });
     
     test('Km to Mi', function(done) {
-      
-      //done();
+      let input = [12.87, 'km'];
+      let expected = 8;
+      assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
+      done();
     });
     
     test('Lbs to Kg', function(done) {
-      
-      //done();
+      let input = [3, 'lbs'];
+      let expected = 1.36;
+      assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
+      done();
     });
     
     test('Kg to Lbs', function(done) {
-      
-      //done();
+      let input = [1.36, 'kg'];
+      let expected = 3;
+      assert.approximately(convertHandler.convert(input[0],input[1]),expected,0.1); //0.1 tolerance
+      done();
     });
     
   });
