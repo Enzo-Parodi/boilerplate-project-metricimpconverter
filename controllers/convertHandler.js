@@ -36,7 +36,7 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     const validUnitsRegEx = /\bgal\b|\bl\b|\bmi\b|\bkm\b|\blbs\b|\bkg\b|\bGAL\b|\bL\b|\bMI\b|\bKM\b|\bLBS\b|\bKG\b/
-    const unit = input.match(/[A-Z]/ig).join('')
+    const unit = input.match(/[A-Z]/ig).join('').toLowerCase()
     let result = 'Not a valid unit';
     
     if (!!unit.match(validUnitsRegEx)) {
@@ -52,6 +52,7 @@ function ConvertHandler() {
       case 'gal':
         result = 'L';
         break;
+      case 'L':
       case 'l':
         result = 'gal';
         break;
@@ -68,7 +69,7 @@ function ConvertHandler() {
         result = 'lbs';
         break;
     }
-
+    
     return result;
   };
 
@@ -78,6 +79,7 @@ function ConvertHandler() {
       case 'gal':
         result = 'gallons';
         break;
+      case 'L':
       case 'l':
         result = 'litres';
         break;
@@ -108,6 +110,7 @@ function ConvertHandler() {
       case 'gal':
         result = initNum * galToL
         break;
+      case 'L':
       case 'l':
         result = initNum / galToL;
         break;
@@ -129,7 +132,7 @@ function ConvertHandler() {
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result;
+    let result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`
 
     return result;
   };
