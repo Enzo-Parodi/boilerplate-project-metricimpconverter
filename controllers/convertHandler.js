@@ -35,8 +35,8 @@ function ConvertHandler() {
   };
 
   this.getUnit = function (input) {
-    const validUnitsRegEx = /\bgal\b|\bl\b|\bmi\b|\bkm\b|\blbs\b|\bkg\b|\bGAL\b|\bL\b|\bMI\b|\bKM\b|\bLBS\b|\bKG\b/
-    const unit = input.match(/[A-Z]/ig).join('').toLowerCase()
+    const validUnitsRegEx = /\bgal\b|\bL\b|\bmi\b|\bkm\b|\blbs\b|\bkg\b/g
+    const unit = input.match(/[A-Z]/gi).join('');
     let result = 'Not a valid unit';
     
     if (!!unit.match(validUnitsRegEx)) {
@@ -53,7 +53,6 @@ function ConvertHandler() {
         result = 'L';
         break;
       case 'L':
-      case 'l':
         result = 'gal';
         break;
       case 'mi':
@@ -69,7 +68,7 @@ function ConvertHandler() {
         result = 'lbs';
         break;
     }
-    
+
     return result;
   };
 
@@ -80,7 +79,6 @@ function ConvertHandler() {
         result = 'gallons';
         break;
       case 'L':
-      case 'l':
         result = 'litres';
         break;
       case 'mi':
@@ -111,7 +109,6 @@ function ConvertHandler() {
         result = initNum * galToL
         break;
       case 'L':
-      case 'l':
         result = initNum / galToL;
         break;
       case 'mi':

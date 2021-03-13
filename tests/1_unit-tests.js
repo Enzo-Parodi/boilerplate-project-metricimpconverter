@@ -58,15 +58,15 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getUnit(input)', function() {
     
     test('For Each Valid Unit Inputs', function(done) {
-      let input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
+      let input = ['gal','L','mi','km','lbs','kg'];
       input.forEach(function(ele) {
-        assert.equal(convertHandler.getUnit(`10${ele}`), ele.toLowerCase())
+        assert.equal(convertHandler.getUnit(`10${ele}`), ele)
       });
       done();
     });
     
     test('Unknown Unit Input', function(done) {
-      let input = ['gadl','lw','i','er','wga','fg','OJ','LP','MSI','KKM','LEFBS','KGS'];
+      let input = ['l','lw','i','er','wga','fg','OJ','LP','MSI','KKM','LEFBS','KGS'];
       input.forEach(function(ele) {
         assert.equal(convertHandler.getUnit(`10${ele}`), 'Not a valid unit')
       });
